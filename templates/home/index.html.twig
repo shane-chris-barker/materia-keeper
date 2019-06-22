@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container mt-5" id="welcome_div">
+        <div class="col-md-6 offset-md-3 text-center text-white">
+            <div class="row">
+                <h1>Welcome to the Materia Keeper</h1>
+            </div>
+            <div class="row">
+                <h3>A database of all available materia in the Final Fantasy 7 universe.</h3>
+            </div>
+            <div class="row">
+                <p class="col-12">Use the form below to show details for the selected materia.</p>
+            </div>
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    {{ form(form) }}
+                </div>
+            </div>
+            {% if materia != false %}
+                <div class="row">
+                    <p class="col-12"><strong>Name:</strong><br>
+                        {{materia.name}}
+                    </p>
+                </div>
+                <div class="row">
+                    <div class=" col-2 offset-5 {{materia.type | lower}}"/></div>
+                </div>
+                <div class="row">
+                    <p class="col-12"><strong>Type:</strong><br>
+                        {{materia.type}}
+                    </p>
+                </div>
+                 <div class="row">
+                    <p class="col-12"><strong>Description:</strong><br>
+                        {{materia.description}}
+                    </p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
