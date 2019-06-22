@@ -27,7 +27,6 @@ class MateriaRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('m')
             ->select('m.name', 'm.type')->getQuery()->getResult();
     }
-
     // /**
     //  * @return Materia[] Returns an array of Materia objects
     //  */

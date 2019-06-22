@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MateriaRepository")
@@ -38,6 +39,32 @@ class Materia
      * @ORM\Column(type="string", length=255)
      */
     private $type;
+
+    /**
+     * @ORM\ManyToMany(targetEntity = "Locations")
+    */
+    private $materiaLocations;
+
+    /**
+     * @ORM\ManyToMany(targetEntity = "Abilities")
+    */
+    private $materiaAbilities;
+
+    public function __construct()
+    {
+        $this->materiaLocations = new ArrayCollection();
+        $this->materiaAbilities = new ArrayCollection();
+    }
+
+    public function getMateriaLocations()
+    {
+        return $this->materiaLocations;
+    }
+
+    public function getMateriaAbilities()
+    {
+        return $this->materiaAbilities;
+    }
 
     public function getId(): ?int
     {

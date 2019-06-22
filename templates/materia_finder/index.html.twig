@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container mt-5" id="welcome_div">
+        <div class=" text-center text-white">
+            <div class="row">
+                <h1 class="col-12">Welcome to the Materia Finder!</h1>
+            </div>
+            <div class="row">
+                <h3 class="col-12">Use this feature to locate any piece of materia in the Final Fantasy 7 universe!</h3>
+            </div>
+           
+            <div class="row">
+               
+                <div class="col-md-8 offset-md-2">
+                    {{ form(form) }}
+                </div>
+            </div>
+            {% if materia != false %}
+               
+                <div class="row">
+                    <div class="col-md-4">
+                    	<div class="row">
+                    		<h3 class="col-12">
+                    			Basic information
+                    		</h3>
+                    	</div>
+                        <div class="row">
+                            <p class="col-12"><strong>Name:</strong><br>
+                                {{materia.name}}
+                            </p>
+                        </div>
+                        <div class="row">
+                            <div class="col-2 offset-5 {{materia.type | lower}} rounded-circle"/></div>
+                        </div>
+                        <div class="row">
+                            <p class="col-12"><strong>Type:</strong><br>
+                                {{materia.type}}
+                            </p>
+                        </div>
+                        <div class="row">
+                           <p class="col-12"><strong>Description:</strong><br>
+                               {{materia.description}}
+                           	</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                    	<div class="row">
+                    		<h3 class="col-12">
+                    			Location Information
+                    		</h3>
+                    	</div>
+                    	{% for location in locations %}
+                    		<div class="row">
+                    			<p class="col-12">
+                    				<strong>Location Name:</strong>
+                    				<br>
+                    				{{ location.name }}
+                    			</p>
+                    		</div>
+                    	{% endfor %}
+                    </div>
+                    <div class="col-md-4">
+                    	<div class="row">
+                    		<h3 class="col-12">
+                    			Abilities Granted
+                    		</h3>
+                    	</div>
+                        {% for ability in abilities %}
+                    		<div class="row">
+                    			<p class="col-12">
+                    				<strong>Ability Name:</strong>
+                    				<br>
+                    				{{ ability.name }}
+                    			</p>
+                    		</div>
+                    	{% endfor %}
+                    </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

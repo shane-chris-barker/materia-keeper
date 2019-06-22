@@ -8,16 +8,16 @@
         {% endblock %}
     </head>
     <body>
+        {% include 'partials/nav.html.twig' %}
          <div class="container-fluid" id="main" style="min-height:500px;">
-        
             {% block body %}
             {% endblock %}
         </div>
         
         {% block javascripts %}
-         {{ encore_entry_script_tags('app') }}
-			 <script src="/build/runtime.js"></script>
-             <script src="/build/app.js"></script>
+            {{ encore_entry_script_tags('app') }}
+			<script src="/build/runtime.js"></script>
+            <script src="/build/app.js"></script>
         {% endblock %}
     </body>
 </html>

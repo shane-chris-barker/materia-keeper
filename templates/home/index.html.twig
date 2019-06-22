@@ -1,41 +1,27 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="container mt-5" id="welcome_div">
-        <div class="col-md-6 offset-md-3 text-center text-white">
+        <div class=" text-center text-white">
             <div class="row">
-                <h1>Welcome to the Materia Keeper</h1>
+                <h1 class="col-12">Welcome to the Materia Keeper</h1>
             </div>
             <div class="row">
-                <h3>A database of all available materia in the Final Fantasy 7 universe.</h3>
+                <h3 class="col-12">A fan made resource for various aspects of the Final Fantasy 7 universe.</h3>
             </div>
             <div class="row">
-                <p class="col-12">Use the form below to show details for the selected materia.</p>
+                <p class="col-12">
+                    Welcome to the Materia Keeper. I made this site as a project in my spare time out of my love for Final Fantasy 7.
+                    It is home to various FF7 based resources including a Materia searching feature, Spotify playlists, videos and much more.
+                 </p>
+                 <p class="col-12">
+                    I also hope it may come in use for refreshers in the run up to the release of the Remake.
+                </p>
             </div>
             <div class="row">
-                <div class="col-md-8 offset-md-2">
-                    {{ form(form) }}
+                <div class="col-md-6">
+                    <iframe src="https://open.spotify.com/embed/album/6LUFxR9PdQttNXKGxA6zRM" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                 </div>
             </div>
-            {% if materia != false %}
-                <div class="row">
-                    <p class="col-12"><strong>Name:</strong><br>
-                        {{materia.name}}
-                    </p>
-                </div>
-                <div class="row">
-                    <div class=" col-2 offset-5 {{materia.type | lower}}"/></div>
-                </div>
-                <div class="row">
-                    <p class="col-12"><strong>Type:</strong><br>
-                        {{materia.type}}
-                    </p>
-                </div>
-                 <div class="row">
-                    <p class="col-12"><strong>Description:</strong><br>
-                        {{materia.description}}
-                    </p>
-                </div>
-            {% endif %}
         </div>
     </div>
 {% endblock %}
