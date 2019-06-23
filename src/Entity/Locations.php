@@ -26,6 +26,16 @@ class Locations
      */
     private $description;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $x_coordinates;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $y_coordinates;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -51,6 +61,30 @@ class Locations
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getXCoordinates(): ?int
+    {
+        return $this->x_coordinates;
+    }
+
+    public function setXCoordinates(?int $x_coordinates): self
+    {
+        $this->x_coordinates = $x_coordinates;
+
+        return $this;
+    }
+
+    public function getYCoordinates(): ?int
+    {
+        return $this->y_coordinates;
+    }
+
+    public function setYCoordinates(?int $y_coordinates): self
+    {
+        $this->y_coordinates = $y_coordinates;
 
         return $this;
     }

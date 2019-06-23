@@ -18,7 +18,6 @@ class MateriaFinderController extends AbstractController
     public function index(Request $request)
     {
     	$form = $this->buildForm();
-    
     	$form->handleRequest($request);
 
     	if($form->isSubmitted()) {
@@ -38,6 +37,7 @@ class MateriaFinderController extends AbstractController
         );
     }
 
+    // Build the form required to be able to search for materia
     private function buildForm()
     {
     	$eMateria 		= new Materia();
@@ -59,8 +59,7 @@ class MateriaFinderController extends AbstractController
     				'Support' 		=> $formChoices['Support'],
     			],
     			'label' 	=> 'Materia Name',
-    			'required' 	=> true,
-    			'attr'  	=> ['class' => 'form-control']
+    			'attr'  	=> ['class' => 'form-control', 'required' => true]
     		]
     	)->add('submit', SubmitType::class, ['label' => 'Search', 'attr' => ['class' => 'btn btn-primary mt-2']])
     	->getForm();

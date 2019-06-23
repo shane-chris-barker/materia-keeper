@@ -1,0 +1,113 @@
+<div id="materia_results">
+ 	<div class="card">
+		<div class="card-header" id="materia_information_header">
+		  	<h5 class="mb-0">
+				<button 
+					class="btn btn-link" 
+					data-toggle="collapse" 
+					data-target="#materia_information" 
+					aria-expanded="true" 
+					aria-controls="materia_information"
+				>
+			  		Basic Information about <strong>{{ materia.name}}</strong> materia.
+				</button>
+		  	</h5>
+		</div>
+
+		<div id="materia_information" class="collapse show" aria-labelledby="materia_information_header" data-parent="#materia_results">
+	  		<div class="card-body">
+				<p class="col-12">
+					<strong>Name:</strong>
+					<br>
+					{{materia.name}}
+				</p>
+			</div>
+			<div class="row">
+				<div class="col-2 offset-5 {{materia.type | lower}} rounded-circle"/></div>
+			</div>
+			<div class="row">
+				<p class="col-12"><strong>Type:</strong><br>
+					{{materia.type}}
+				</p>
+			</div>
+			<div class="row">
+			   	<p class="col-12"><strong>Description:</strong><br>
+				   {{materia.description}}
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="card-header" id="materia_location_heading">
+	  		<h5 class="mb-0">
+				<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#materia_location" aria-expanded="false" aria-controls="materia_location">
+			  		Where Can I Find <strong>{{ materia.name }}</strong> materia?
+				</button>
+		  	</h5>
+		</div>
+		<div id="materia_location" class="collapse" aria-labelledby="materia_location_heading" data-parent="#materia_results">
+			<div class="card-body">
+				{% for location in locations %}
+					<div class="row">
+	                    <p class="col-12">
+	    					<strong>Location Name:</strong>
+	    					<br>
+	    					{{ location.name }}
+	    				</p>
+	    			</div>
+	    		{% endfor %}
+	    		<div class="row">
+	    			<canvas id="mapCanvas"  width="1200" height="1200" style="width:100%; height:100%"></canvas>
+	    		</div>
+	    	</div>
+		</div>
+	</div>
+	<div class="card">
+		<div class="card-header" id="materia_abilities_heading">
+			<h5 class="mb-0">
+				<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#materia_abilities" aria-expanded="false" aria-controls="materia_abilities">
+		  			What spells or abilities can be gained from <strong>{{ materia.name}}</strong> materia?
+				</button>
+		  	</h5>
+		</div>
+		<div id="materia_abilities" class="collapse" aria-labelledby="materia_abilities_heading" data-parent="#materia_results">
+			<div class="card-body">
+				{% for ability in abilities %}
+                	<div class="row">
+                    	<p class="col-12">
+                    		<strong>Ability Name:</strong>
+                    		<br>
+                    		{{ ability.name }}
+                    	</p>
+                    </div>
+                    <div class="row">
+                    	<p class="col-12">
+                    		<strong>Description:</strong>
+                    		<br>
+                    		{{ ability.description }}
+                    	</p>
+                    </div>
+                {% endfor %}
+	  		</div>
+		</div>
+	</div>
+</div>
+<script defer="defer">
+	const myCanvas 	= document.getElementById('mapCanvas');
+	const context 	= myCanvas.getContext('2d');
+	const img		= new Image();
+		img.src 	= "{{ asset('/build/images/map.png') }}";
+		img.onload 	= () => {
+		context.drawImage(img, 0, 0);
+		{% for location in locations %}
+			context.beginPath();
+			context.arc( {{location.xCoordinates}}, {{location.yCoordinates}}, 20, 0, 2 * Math.PI);
+			context.fillStyle = 'yellow';
+	  		context.fill();
+	  		context.lineWidth = 7;
+	  		context.strokeStyle = 'black';
+	  	{% endfor %}
+	};
+</script>
+

@@ -31,6 +31,11 @@ class Abilities
      */
     private $video;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $required_materia_level;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class Abilities
     public function setVideo(?string $video): self
     {
         $this->video = $video;
+
+        return $this;
+    }
+
+    public function getRequiredMateriaLevel(): ?int
+    {
+        return $this->required_materia_level;
+    }
+
+    public function setRequiredMateriaLevel(?int $required_materia_level): self
+    {
+        $this->required_materia_level = $required_materia_level;
 
         return $this;
     }
