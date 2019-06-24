@@ -44,19 +44,22 @@ class MateriaFinderController extends AbstractController
 		$materia 		= $this->getDoctrine()->getRepository(Materia::class)->getNamesAndTypes();
 
 		foreach ($materia as $sort) {
-			$formChoices[$sort['type']][$sort['name']] = $sort['name'];
+			$formChoices[strtolower($sort['type'])][$sort['name']] = $sort['name'];
 		}
 
-		$form = $this->createFormBuilder($eMateria)
-    	->add('name', ChoiceType::class, 
+        foreach ($formChoices as $key => $value) {
+            asort($formChoices[$key]);
+        }
+
+		$form = $this->createFormBuilder($eMateria)->add('name', ChoiceType::class, 
     		[
     			'choices' => [
     				'Please Select'	=> null,
-    				'Command' 		=> $formChoices['Command'],
-					'Independent'	=> $formChoices['Independent'],
-					'Magic'			=> $formChoices['Magic'],
-    				'Summon' 		=> $formChoices['Summon'],
-    				'Support' 		=> $formChoices['Support'],
+    				'Command' 		=> $formChoices['command'],
+					'Independent'	=> $formChoices['independent'],
+					'Magic'			=> $formChoices['magic'],
+    				'Summon' 		=> $formChoices['summon'],
+    				'Support' 		=> $formChoices['support'],
     			],
     			'label' 	=> 'Materia Name',
     			'attr'  	=> ['class' => 'form-control', 'required' => true]

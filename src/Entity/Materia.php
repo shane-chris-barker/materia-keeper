@@ -47,6 +47,7 @@ class Materia
 
     /**
      * @ORM\ManyToMany(targetEntity = "Abilities")
+     * @ORM\OrderBy({"required_materia_level" = "ASC"})
     */
     private $materiaAbilities;
 
