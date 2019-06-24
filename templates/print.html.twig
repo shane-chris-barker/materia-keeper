@@ -2,17 +2,15 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}The Materia Keeper - Materia Checklist!{% endblock %}</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         {% block stylesheets %}
        		<link href="{{ asset('/build/app.css') }}" rel="stylesheet">
-            <link href="{{ asset('/build/vendors~app.css') }}" rel="stylesheet">
         {% endblock %}
     </head>
     <body>
-        {% include 'partials/nav.html.twig' %}
-         <div class="container-fluid" id="main">
+         <div class="container-fluid">
             {% block body %}
             {% endblock %}
         </div>

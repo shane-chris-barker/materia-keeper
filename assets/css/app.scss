@@ -1,17 +1,9 @@
-body {
-    background-color: lightgray;
-}
+
 @import "~bootstrap/scss/bootstrap";
 
-body {
-	
+#main {
 	background-image: url("../images/logo.png"); 
 	background-position: center; background-repeat: no-repeat;
-  
-}
-
-#main {
-	margin-top:10%;
 }
 
 #welcome_div {

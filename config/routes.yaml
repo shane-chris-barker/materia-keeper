@@ -1,10 +1,9 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
-
 home:
     path: /
     controller: App\Controller\HomeController::index
-mater-finder:
+materia-finder:
     path: /materia-finder
     controller: App\Controller\MateriaFinderController::index
+materia-checklist:
+    path: /materia-checklist
+    controller: App\Controller\MateriaChecklistController::index

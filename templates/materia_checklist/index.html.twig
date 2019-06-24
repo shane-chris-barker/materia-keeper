@@ -1,0 +1,108 @@
+{% extends 'print.html.twig' %}
+{% block body %}
+    <div class="container">
+    	<div class="col-md-8 offset-md-2">
+    		<div class="text-center">
+	            <div class="row">
+	                <h1 class="col-12">Materia checklist</h1>
+	            </div>
+	            <div class="row">
+	            	<a href="javascript:window.print();"class="btn btn-primary col-4 offset-4 d-print-none">Print</a>
+	            </div>
+            	<div class="row mt-4">
+                	<table width="100%" class="table table-bordered">
+	                	<thead>
+	                		<tr>
+	                			<td>
+	                				<strong>Materia / Spell</strong>
+	                			</td>
+	                			<td>
+	                				<strong>Obtained / Learned</strong>
+	                			</td>
+	                			<td>
+	                				<strong>Mastered Materia</strong>
+	                			</td>
+	                		</tr>
+	                	</thead>
+                		<tbody>
+	                		<tr>
+	                			<td colspan="3">
+	                				<strong>Command Materia</strong>
+	                			</td>
+	                		</tr>
+                			{% for materia in command %}
+                				<tr>
+                					<td><strong>{{materia.name}}</strong></td>
+                					<td></td>
+                					<td></td>
+                				</tr>
+                				{% for ability in materia.abilities %}
+                					<tr>
+                						<td>{{ability.name}}</td>
+                						<td></td>
+                						<td></td>
+                					</tr>
+                				{% endfor %}
+							{% endfor %}
+	                		<tr>
+	                			<td colspan="3">
+	                				<strong>Support Materia</strong>
+	                			</td>
+	                		</tr>
+	                		{% for materia in support %}
+	                			<tr>
+	                				<td><strong>{{materia.name}}</strong></td>
+	                				<td></td>
+	                				<td></td>
+	                			</tr>
+	                		{% endfor %}
+                			<tr>
+                				<td colspan="3">
+                					<strong>Magic Materia</strong>
+                				</td>
+                			</tr>
+                			{% for materia in magic %}
+                				<tr>
+                					<td><strong>{{materia.name}}</strong></td>
+                					<td></td>
+                					<td></td>
+                				</tr>
+                				{% for ability in materia.abilities %}
+                					<tr>
+                						<td>{{ability.name}}</td>
+                						<td></td>
+                						<td></td>
+                					</tr>
+                				{% endfor %}	
+							{% endfor %}
+	                		<tr>
+	                			<td colspan="3">
+	                				<strong>Summon Materia</strong>
+	                			</td>
+	                		</tr>
+            				{% for materia in summon %}
+            					<tr>
+            						<td><strong>{{materia.name}}</strong></td>
+            						<td></td>
+            						<td></td>
+            					</tr>
+            				{% endfor %}
+            				<tr>
+            					<td colspan="3">
+            						<strong>Independent Materia</strong>
+            					</td>
+            				</tr>
+            				{% for materia in independent %}
+            					<tr>
+            						<td><strong>{{materia.name}}</strong></td>
+            						<td></td>
+            						<td></td>
+            					</tr>
+            				{% endfor %}
+                		</tbody>
+                	</table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
